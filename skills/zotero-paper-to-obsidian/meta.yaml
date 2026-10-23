@@ -1,0 +1,7 @@
+description: "Build or refresh a chapter-ordered Obsidian literature note from a Zotero/PDF paper. Trigger only for /zotero-paper-to-obsidian or an explicit literature-note request."
+invocation: explicit
+context_cost: high
+script_first: true
+display_name: "Zotero Paper Note"
+short_description: "Build Obsidian notes from Zotero papers"
+codex_prompt: "Use $zotero-paper-to-obsidian to generate or refresh an Obsidian literature note from this Zotero/PDF paper."

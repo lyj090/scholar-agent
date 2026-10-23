@@ -1,0 +1,134 @@
+# arXiv Workflow Configuration
+# Keyword groups for paper categorization and filtering
+
+# Keyword groups for paper categorization
+# Each group has a name and a list of filter keywords
+keywords:
+  "Manipulation":
+    filters:
+      - "Robot Manipulation"
+      - "Robotic Manipulation"
+      - "Manipulation Policy"
+      - "Imitation Learning"
+      - "RL for Manipulation"
+      - "Dexterous Manipulation"
+
+  "VLM":
+    filters:
+      - "Vision Language Model"
+      - "Vision-Language Model"
+      - "Visual Question Answering"
+      - "Multimodal LLM"
+      - "VLM for Robotics"
+
+  "VLA":
+    filters:
+      - "Vision Language Action"
+      - "Vision-Language-Action"
+      - "VLA Model"
+      - "Vision Action Model"
+      - "Multimodal Action"
+
+  "Humanoid":
+    filters:
+      - "Humanoid Robot"
+      - "Humanoid Locomotion"
+      - "Bipedal Locomotion"
+      - "Humanoid Control"
+      - "Whole-body Control"
+
+  "Dexterous":
+    filters:
+      - "Dexterous Manipulation"
+      - "In-hand Manipulation"
+      - "Finger Gaiting"
+      - "Dexterity"
+      - "Precision Grasp"
+
+  "Event Vision":
+    filters:
+      - "Event Camera"
+      - "Event-based Vision"
+      - "Dynamic Vision Sensor"
+      - "Neuromorphic Vision"
+      - "Event-based SLAM"
+
+  "Reinforcement Learning":
+    filters:
+      - "Reinforcement Learning"
+      - "RL Policy"
+      - "Actor-Critic"
+      - "Policy Gradient"
+      - "Offline RL"
+
+  "Sim-to-Real":
+    filters:
+      - "Sim-to-Real"
+      - "Sim2Real"
+      - "Domain Randomization"
+      - "Domain Adaptation"
+      - "Reality Gap"
+
+# Output settings
+output:
+  # Directory for JSON data persistence
+  json_dir: "./data"
+
+  # Output paths for different formats
+  readme_path: "docs/arxiv/daily-readme.md"
+  pages_path: "./docs/arxiv/pages-index.md"
+  wechat_path: "./docs/wechat.md"
+
+  # Enable/disable output formats
+  formats:
+    readme: true
+    github_pages: true
+    wechat: false
+
+# arXiv API settings
+api:
+  # Max retries for API requests (increased for better rate limit handling)
+  max_retries: 10
+
+  # Delay between API calls (seconds)
+  delay_seconds: 3.0
+
+  # Base delay for rate limit errors (429)
+  rate_limit_delay: 30
+
+  # Timeout for API requests (seconds)
+  timeout: 30
+
+  # Batch size for bulk API requests
+  batch_size: 20
+
+# Publishing settings
+publish:
+  # Enable auto-publish after fetch
+  auto_publish: false
+
+  # Repository for publishing results (separate repo)
+  repo_url: ""  # e.g., "https://github.com/username/robotics-arxiv-daily.git"
+
+  # Branch to push to
+  branch: "main"
+
+  # Commit message template
+  commit_template: "Update papers: {date}"
+
+# Display settings
+display:
+  # Max title length in table output
+  title_max_len: 60
+
+  # Max authors length in table output
+  authors_max_len: 30
+
+  # Number of papers to show by default
+  default_top_n: 15
+
+  # Show score in output
+  show_score: true
+
+  # Show code links in output
+  show_code_links: true

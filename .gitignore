@@ -1,0 +1,84 @@
+# Secrets and env
+*.key
+*.pem
+*.env
+.env.*
+
+# OS / editor
+.vscode/
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# Node (if any tooling added)
+node_modules/
+
+# Local machine-only config (gitignored; each machine maintains its own copy)
+shared/repo-path-index.local.yaml
+shared/paths-discovery.local.yaml
+shared/paths.local.yaml
+
+# Claude Code local overrides
+.claude/settings.local.json
+
+# Obsidian metadata (vault-specific, not repo content)
+.obsidian/
+
+# Zotero CLI runtime cache
+.zotero_cli_index.json
+.zotero_env
+
+# arXiv corpus cache (machine-local, auto-generated)
+.arxiv_corpus_cache.json
+
+# Zotero action ledger — mirrors write receipts so `rollback --last N` can
+# resolve them without reading Zotero's protected journal table. Machine-local.
+data/zotero-actions.jsonl
+
+# Zotero library identifier index (machine-local derived cache; rebuilt in ~0.3s)
+data/zotero-library-index.json
+
+# MinerU auto-parse retry counters (machine-local; without it a PDF that the
+# service rejects would be retried every cron tick)
+data/mineru-sync-failures.json
+
+# arXiv PDFs downloaded by `arxiv_fetch.py import` and staged before upload.
+# Zotero owns the stored copy afterwards, so this is a local cache only.
+data/pdf-cache/
+
+# Scratch / temp files at repo root
+*.tmp
+*.bak
+
+# Logs
+*.log
+
+# Generated platform skill trees. `skills/<name>/SKILL.md` + `meta.yaml` is the
+# only source; `scripts/deploy/generate.sh` derives the five trees below. They
+# are build output: tracking them made every skill edit a six-file change and
+# let a stale copy ship silently. deploy.sh and CI both run the generator.
+claude-skills/
+cursor-skills/
+codex-skills/
+grok-skills/
+dsh-skills/
+
+# Local AI artifacts — research/design are tracked; reports are scratch (see ~/.claude/CLAUDE.md)
+.ai/reports/
+
+# Test files
+data/llm_refine_input*.json
+
+# Runtime output: papers discovered by `arxiv_fetch.py find --save`
+# (personal research interests; regenerate locally)
+data/recommended.json

@@ -1,0 +1,7 @@
+description: "ArXiv discovery, Zotero import, library pruning, duplicate merge, or change rollback. Trigger only for /arxiv-to-library or a direct ArXiv/library-maintenance request; not generic paper questions."
+invocation: explicit
+context_cost: high
+script_first: true
+display_name: "arXiv Library"
+short_description: "Find arXiv papers, import to Zotero, prune or dedupe"
+codex_prompt: "Use $arxiv-to-library to find relevant arXiv papers, import selected results to Zotero, and prune or dedupe the library."

@@ -1,0 +1,44 @@
+# Skill workflow groups — single source for deploy.sh
+# Usage: bash deploy.sh --group core --group literature
+#
+# 对齐当前 Obsidian 工作流：
+#   core       → AI 增效流 (General Assistant Skills)
+#   literature → 前沿跟踪流 (Literature & Knowledge Management)
+#
+# Commit / token 成本属平台原生能力，不再作为 skill 维护：
+#   commit → agent 直接 git status/diff + git commit（Conventional Commits）
+#   token  → 平台自带用量面板；transcript 解析脚本见 scripts/skills/（未删）
+
+groups:
+  core:
+    description: "通用 Agent 辅助（research / paper-lookup）"
+    skills:
+      - research
+      - paper-lookup
+
+  literature:
+    description: "文献与知识管理（Zotero ↔ Obsidian）"
+    skills:
+      - arxiv-to-library
+      - zotero-paper-to-obsidian
+      - zotero-inbox-to-library
+      - obsidian-zotero-tag-governance
+
+# Default groups when no --group specified (excludes literature)
+defaults:
+  - core
+
+# All platforms deploy the same groups — uniform across machines
+cursor_defaults:
+  - core
+  - literature
+
+# Auto-add groups when machine paths are ready (see scripts/lib/skill_groups.sh)
+auto_groups:
+  literature:
+    # No requires_file: paths.local.yaml is an optional override, and demanding
+    # it blocked a machine whose vault and Zotero were both auto-discovered while
+    # an empty file — containing less information — passed. The key check below
+    # goes through the same resolver the CLI uses, so discovery counts.
+    requires_keys:
+      - obsidian.vault

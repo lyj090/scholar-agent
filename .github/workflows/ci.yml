@@ -1,0 +1,116 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Python ${{ matrix.python }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # 3.10 is the documented floor; 3.12 is what most people run.
+        python: ["3.10", "3.12"]
+        os: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml requests pytest
+
+      - name: Run the test suite
+        # No Zotero, no vault, no MinerU: CI proves the repository works
+        # without a library, which is the promise the README makes.
+        run: python -m pytest scripts/tests -q
+
+      - name: Generate the platform skill trees
+        # The `*-skills/` trees are build output, not source: they are
+        # .gitignore'd and produced from `skills/`. Anything that inspects them
+        # has to generate them first, which is also what proves the generator
+        # runs on a clean checkout.
+        run: bash scripts/deploy/generate.sh
+
+      - name: Self-diagnosis
+        # doctor must report a usable install on a bare machine. If it ever
+        # starts demanding Zotero, this job fails and the claim is caught.
+        run: python scripts/deploy/doctor.py
+
+      - name: Skill trees are in sync with their source
+        run: bash scripts/deploy/lint-skills.sh
+
+  windows:
+    name: Python ${{ matrix.python }} on windows
+    # Windows is supported for the Python code and the CLI. The deployment
+    # scripts are POSIX shell (symlinks, chmod, bash), so they are not exercised
+    # here — that is what the Linux jobs are for.
+
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml requests pytest
+
+      - name: Generate the platform skill trees
+        shell: bash
+        run: bash scripts/deploy/generate.sh
+
+      - name: Run the test suite
+        # Windows is not a supported deployment target for the symlink-based
+        # deploy step, but the Python code and the CLI must still import and
+        # pass. CRLF is neutralised by .gitattributes.
+        run: python -m pytest scripts/tests -q
+
+  docs:
+    name: Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install pyyaml requests pytest
+
+      - name: Generate the platform skill trees
+        run: bash scripts/deploy/generate.sh
+
+      - name: Bilingual READMEs stay in step
+        run: python -m pytest scripts/tests/test_readme_parity.py -q
+
+      - name: Documentation links resolve
+        run: python -m pytest scripts/tests/test_docs_structure.py -q
+
+      - name: No machine-local files were committed
+        run: |
+          if git ls-files | grep -E '\.local\.(yaml|yml|json)$|^\.zotero_env$'; then
+            echo "::error::a machine-local file is tracked"
+            exit 1
+          fi
+          echo "no machine-local files tracked"

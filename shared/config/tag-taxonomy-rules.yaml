@@ -1,0 +1,243 @@
+version: 3
+updated_for: zotero-obsidian-unified-tagging
+principles:
+  - use_lowercase_only
+  - use_english_only
+  - prefer_prefixed_tags
+  - avoid_duplicate_synonyms
+  - keep_tags_sparse_and_high_value
+
+tag_prefixes:
+  type: document role (paper, concept, project, index, map, web-clip)
+  area: broad knowledge domain (robotics, ml, control-theory)
+  topic: reusable research theme
+  method: core method, algorithm, or theory family
+  task: what the work solves (motion-planning, grasping)
+  software: named library or framework
+  hardware: physical platform or sensor
+  source: origin or venue (zotero, conference, journal)
+  rel: relationship to my work (project binding, usage role, thesis relevance)
+  status: lifecycle state
+
+default_tags:
+  - type/paper
+  - status/to-read
+
+limits:
+  type: 1
+  area: 2
+  topic: 3
+  method: 3
+  task: 3
+  software: 2
+  hardware: 2
+  source: 2
+  rel: 3
+  status: 1
+
+mapping:
+  # area (broad domains)
+  robotics: area/robotics
+  machine-learning: area/machine-learning
+  computer-vision: area/computer-vision
+  vision: area/vision
+  control-theory: area/control-theory
+  control-area: area/control
+  tools: area/tools
+
+  # topic (reusable research themes)
+  perception: topic/perception
+  manipulation: topic/manipulation
+  manipulation-learning: topic/manipulation-learning
+  control-topic: topic/control
+  learning-based-control: topic/learning-based-control
+  whole-body-control: topic/whole-body-control
+  humanoid-control: topic/humanoid-control
+  event-based-vision: topic/event-vision
+  event-camera-topic: topic/event-camera
+  neuromorphic-vision: topic/event-vision
+  locomotion: topic/locomotion
+  legged-locomotion: topic/legged-locomotion
+  slam: topic/slam
+  tactile-sensing: topic/tactile-sensing
+  planning: topic/planning
+  motion-planning-topic: topic/motion-planning
+  world-model: topic/world-model
+  vla: topic/vision-language-action
+  vision-language-action: topic/vision-language-action
+  ball-catching: topic/ball-catching
+  bimanual-manipulation-topic: topic/bimanual-manipulation
+  contact-optimization: topic/contact-optimization
+  contact-rich-manipulation: topic/contact-rich-manipulation
+  hand-retargeting: topic/hand-retargeting
+  impact-dynamics: topic/impact-dynamics
+  inverse-kinematics-topic: topic/inverse-kinematics
+  lidar-inertial-odometry: topic/lidar-inertial-odometry
+  long-horizon-manipulation: topic/long-horizon-manipulation
+  manipulability: topic/manipulability
+  3d-gaussian-splatting: topic/3d-gaussian-splatting
+  novel-view-synthesis: topic/novel-view-synthesis
+  physics-based-character-control: topic/physics-based-character-control
+  rigid-body-dynamics: topic/rigid-body-dynamics
+  skill-discovery: topic/skill-discovery
+  teleoperation: topic/teleoperation
+  trajectory-estimation: topic/trajectory-estimation
+  animation: topic/animation
+  aerial-robotics: topic/aerial-robotics
+  humanoid-robotics: topic/humanoid-robotics
+  motion-priors: topic/motion-priors
+
+  # method
+  reinforcement-learning: method/reinforcement-learning
+  rl: method/reinforcement-learning
+  offline-rl: method/offline-rl
+  off-policy-rl: method/off-policy-rl
+  imitation-learning: method/imitation-learning
+  behavior-cloning: method/behavior-cloning
+  motion-imitation: method/motion-imitation
+  adversarial-learning: method/adversarial-learning
+  adversarial-imitation-learning: method/adversarial-imitation-learning
+  transformer: method/transformer
+  diffusion: method/diffusion
+  diffusion-policy: method/diffusion-policy
+  flow-matching: method/flow-matching
+  mpc: method/model-predictive-control
+  sim-to-real: method/sim-to-real
+  amp-method: method/amp
+  ase: method/ase
+  hqp: method/hqp
+  ikf: method/ikf
+  kinematic-optimization: method/kinematic-optimization
+  trajectory-optimization-method: method/trajectory-optimization
+  optimization: method/optimization
+  neural-fields: method/neural-fields
+  alignment: method/alignment
+  collision-avoidance: method/collision-avoidance
+  impedance-control: method/impedance-control
+  force-control: method/force-control
+  position-control: method/position-control
+  locomotion-control: method/locomotion-control
+  depth-estimation: method/depth-estimation
+  detection: method/detection
+  gpu-acceleration: method/gpu-acceleration
+  motion-compensation: method/motion-compensation
+  segmentation: method/segmentation
+  state-estimation: method/state-estimation
+  tracking: method/tracking
+
+  # task
+  motion-planning: task/motion-planning
+  trajectory-optimization: task/trajectory-optimization
+  inverse-kinematics: task/inverse-kinematics
+  ik: task/inverse-kinematics
+  feature-tracking: task/feature-tracking
+  visual-tracking: task/feature-tracking
+  video-deblurring: task/video-deblurring
+  grasping: task/grasping
+  loco-manipulation: task/loco-manipulation
+  bimanual-manipulation: task/bimanual-manipulation
+  humanoid-locomotion: task/humanoid-locomotion
+  quadruped-locomotion: task/quadruped-locomotion
+  motion-retargeting: task/motion-retargeting
+
+  # software
+  pinocchio: software/pinocchio
+  pyroki: software/pyroki
+  curobo: software/curobo
+  isaac-gym: software/isaac-gym
+  isaac-sim: software/isaac-sim
+  mujoco: software/mujoco
+  ros2: software/ros2
+
+  # hardware
+  event-camera-hardware: hardware/event-camera
+  dual-arm: hardware/dual-arm
+  humanoid-robot: hardware/humanoid-robot
+  anymal: hardware/anymal
+  go1: hardware/unitree-go1
+  franka: hardware/franka
+  unitree-g1: hardware/unitree-g1
+
+  # source (venues + origins)
+  cvpr: source/cvpr
+  icra: source/icra
+  iros: source/iros
+  rss: source/rss
+  corl: source/corl
+  iclr: source/iclr
+  neurips: source/neurips
+  acm: source/acm
+  science-robotics: source/science-robotics
+  zotero: source/zotero
+  arxiv: source/arxiv
+
+  # rel (relationship to my work — unified from former proj/use/rel)
+  thesis-core: rel/thesis-core
+  thesis-related: rel/thesis-related
+  toolchain: rel/toolchain
+  background: rel/background
+  related-work: rel/related-work
+  baseline: rel/baseline
+  reproduce: rel/reproduce
+
+  # type
+  paper: type/paper
+  survey: type/survey
+  benchmark: type/benchmark
+  dataset: type/dataset
+  concept: type/concept
+  project: type/project
+  index: type/index
+  map: type/map
+  web-clip: type/web-clip
+
+  # status (reading / deep-read lifecycle)
+  to-read: status/to-read
+  deep-read: status/deep-read
+  reading: status/reading
+  read: status/read
+
+rules:
+  tagging_order:
+    - type
+    - area
+    - topic
+    - method
+    - task
+    - software
+    - hardware
+    - source
+    - rel
+    - status
+  status_policy: keep_only_one_primary_status
+  language_policy: do_not_create_chinese_tags
+  case_policy: lowercase_only
+  synonym_policy: keep_only_canonical_mapped_form
+  sparsity_policy: do_not_overtag
+
+folder_defaults:
+  "02-Literature/ZoteroNotes/**":
+    required: [type/*]
+    recommended: [area/*, topic/*, status/*]
+    allowed: [method/*, task/*, software/*, hardware/*, source/*, rel/*, status/*]
+  "03-Concepts/**":
+    required: [type/*]
+    recommended: [area/*]
+    allowed: [topic/*, method/*]
+  "01-Projects/**":
+    required: [type/project]
+    allowed: [rel/*, area/*]
+  "02-Literature/WebNotes/**":
+    required: [type/web-clip]
+    recommended: [area/*]
+    allowed: [topic/*, method/*, source/*]
+
+notes:
+  - prefer tags that can be reused across multiple notes
+  - do not create a new tag unless it is likely to recur
+  - use software/ for named libraries and toolkits
+  - use task/ for what the work solves
+  - use method/ for how the work solves it
+  - use area/ for broad domains (fewer, more stable than topic/)
+  - use source/ for where it came from (venue, database, import origin)
+  - use rel/ for how this relates to my work (project, usage, thesis)

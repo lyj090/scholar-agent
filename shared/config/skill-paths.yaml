@@ -1,0 +1,32 @@
+# Per-skill path requirements — single source of truth.
+#
+# `skill-gate.sh <skill>` (and `check_paths.py --skill <skill>`) refuses a skill
+# whose declared paths are not usable on this machine. Before this file existed
+# the requirement list was read from a `skills:` block in the gitignored
+# `paths.local.yaml`, which no template shipped and no user could know to write,
+# so every per-skill check silently returned "no requirements" and passed.
+#
+# An empty list means "no machine prerequisites": the skill runs anywhere and
+# degrades gracefully. Only list keys that make the skill *impossible* to run,
+# never ones it can fall back on — a gate that cries wolf gets ignored.
+#
+# Keys are validated against the resolved configuration, so an auto-discovered
+# value satisfies a requirement exactly like one written in paths.local.yaml.
+
+paper-lookup: []          # preflight degrades to ABSENT when no corpus exists
+research: []              # pure filesystem/git work
+
+arxiv-to-library:
+  - zotero.local_api      # discovery is local; import needs the write API
+
+zotero-inbox-to-library:
+  - zotero.local_api
+  - zotero.inbox_collection_key
+
+zotero-paper-to-obsidian:
+  - obsidian.vault        # the note has to be written somewhere
+  - obsidian.literature_notes
+
+obsidian-zotero-tag-governance:
+  - obsidian.vault
+  - obsidian.literature_notes

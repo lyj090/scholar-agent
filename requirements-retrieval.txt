@@ -1,0 +1,8 @@
+# Optional heavy deps — BM25/embedding retrieval + reranker (lib/arxiv/retrieval_*.py)
+# Not needed for the standard skill workflows; install only if using retrieval.
+sentence-transformers>=2.2.2
+rank-bm25>=0.2.2
+scipy>=1.10
+torch>=2.0.0 --index-url https://download.pytorch.org/whl/cpu
+transformers>=4.35.0
+accelerate>=0.24.0

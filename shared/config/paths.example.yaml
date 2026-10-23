@@ -1,0 +1,27 @@
+# scholar-agent 本机配置（可选）
+#
+# 这个文件是 **可选的**。所有值都会自动发现：
+#   Zotero 数据目录 ← ~/.zotero/zotero/*/prefs.js
+#   MinerU 缓存     ← <data_dir>/llm-for-zotero-mineru
+#   Local API       ← http://127.0.0.1:23119（端口固定）
+#   user_id         ← 0（Zotero 的"本机已登录用户"别名）
+#   inbox 集合      ← 按名字含 "inbox" 在库中查找
+#   Obsidian vault  ← 扫描候选目录并按标记文件打分
+#
+# 只在发现结果不对时才取消注释覆盖。先看当前解析结果：
+#   python3 scripts/lib/zotero/config.py
+#
+# 本文件被 gitignore；每台机器维护自己的副本。
+
+# 唯一常见需要覆盖的项：有多台 vault 候选时（扫描无法替你选）。
+# obsidian:
+#   vault: ~/Documents/Obsidian Vault
+#   literature_notes: ~/Documents/Obsidian Vault/02-Literature/ZoteroNotes
+
+# 其余项通常无需设置，示例：
+# zotero:
+#   data_dir: ~/Zotero                 # Zotero 数据目录（含 zotero.sqlite）
+#   mineru_cache: ~/Zotero/llm-for-zotero-mineru
+#   local_api: http://127.0.0.1:23119
+#   user_id: "0"                # 仅当需要真实数字 ID 时
+#   inbox_collection_key: ABCD1234     # inbox 名字里没有 "inbox" 时才需要

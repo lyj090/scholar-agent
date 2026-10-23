@@ -1,0 +1,19 @@
+# Normalise line endings so a clone on Windows behaves like Linux.
+* text=auto eol=lf
+
+# Shell scripts must keep LF; CRLF breaks the shebang.
+*.sh   text eol=lf
+*.bash text eol=lf
+
+# Python source
+*.py   text eol=lf
+
+# Never let Git merge lockfiles line by line.
+package-lock.json  -diff
+*.lock             -diff
+
+# Binary
+*.png  binary
+*.jpg  binary
+*.gif  binary
+*.pdf  binary

@@ -1,0 +1,19 @@
+# Local repo path index template (machine-specific).
+# Copy to shared/repo-path-index.local.yaml (ignored by git).
+
+version: 1
+updated_at: "2026-04-25T18:10:00+08:00"
+
+repos:
+  my_project:
+    path: "/home/your_user/workspaces/my_project"
+    remote: "git@github.com:your_org/my_project.git"
+  another_project:
+    path: "/home/your_user/workspaces/another_project"
+    remote: "ssh://git@your-server.example.com:22/org/another_project.git"
+  thesis_code:
+    path: "/home/your_user/Docs/Thesis/thesis_code"
+    remote: "ssh://git@your-server.example.com:22/org/thesis_code.git"
+
+alias_to_repo:
+  short_name: my_project

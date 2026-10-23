@@ -1,0 +1,7 @@
+description: "Audit or fix Zotero/Obsidian literature tags. Trigger only for /obsidian-zotero-tag-governance or an explicit tag-governance request; preview before writes."
+invocation: explicit
+context_cost: high
+script_first: true
+display_name: "Tag Governance"
+short_description: "Audit Zotero and Obsidian literature tags"
+codex_prompt: "Use $obsidian-zotero-tag-governance to audit literature tags and propose mappings before applying fixes."

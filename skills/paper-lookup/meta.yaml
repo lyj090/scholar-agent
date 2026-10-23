@@ -1,0 +1,7 @@
+description: "Check whether a paper (arXiv ID, DOI, URL, or title) is already available in the local MinerU/Zotero corpus before fetching it from the web, then read it section by section. Use for reading, citing, comparing, or verifying papers, and for 'do I already have work on X'."
+invocation: natural
+context_cost: medium
+script_first: true
+display_name: "Paper Lookup"
+short_description: "Local-first paper lookup and reading"
+codex_prompt: "Use $paper-lookup to check the local paper corpus before fetching: run the preflight, read cached papers section by section, and only fetch when the paper is genuinely absent."

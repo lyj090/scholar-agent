@@ -1,0 +1,53 @@
+# Copy to a private, gitignored path and maintain the values for your machine.
+# Set PAPER_WORKFLOW_CONFIG to that file when it is outside shared/paths.local.yaml.
+# Secrets belong in environment variables or the CI secret store.
+
+obsidian:
+  vault: ~/Documents/Obsidian-Vault
+
+zotero:
+  local_api: http://127.0.0.1:23119
+  user_id: "0"
+  inbox_collection_key: ""
+
+notes:
+  contract_version: 2
+  language: zh
+  depth: deep
+
+notion:
+  collection: ""
+  # Table heading and optional note shown above the table. Keep project-specific
+  # phrasing (e.g. your sub-problem taxonomy) here, not in the shared scripts.
+  table_title: Paper table
+  subproblem_note: ""
+  intro:
+    title: Research scope
+    deployment_note: ""
+    subproblems: []
+  scope:
+    version: 1
+    core: []
+    support: []
+    out: []
+
+garden:
+  repo: ~/src/paper-garden
+  config_snapshot: .scripts/publishing.yaml
+  title: Research Notes
+  base_url: https://example.org/papers
+  include: []
+  sources: {}
+
+privacy:
+  # Private terms are required in the local file so the publication audit can
+  # reject them. Keep this list out of public repositories.
+  require_terms: true
+  terms: []
+  private_hosts: []
+  # Identifying terms for source releases; omit generic policy phrases such as
+  # "my project" that legitimately appear in tool rules and synthetic tests.
+  release_terms: []
+
+tagging:
+  mapping: {}

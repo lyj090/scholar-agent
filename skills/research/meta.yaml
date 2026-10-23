@@ -1,0 +1,7 @@
+description: "Structured code research with saved .ai/research artifacts. Trigger only for /research or an explicit architecture/code-tracing research request; not ordinary edits."
+invocation: explicit
+context_cost: medium
+script_first: false
+display_name: "Research"
+short_description: "Research code paths with saved artifacts"
+codex_prompt: "Use $research to investigate this code topic and save structured findings as research artifacts."

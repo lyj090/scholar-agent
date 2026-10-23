@@ -1,0 +1,22 @@
+---
+description: Compact defaults for deliberate, minimal, verifiable agent changes.
+alwaysApply: true
+---
+
+# Agent defaults
+
+- Inspect the nearest project instructions and current diff before editing.
+- Surface assumptions and ambiguity before acting; prefer the smallest change
+  that directly solves the request.
+- Match local style. Do not refactor adjacent code or add speculative features.
+- Define success checks before multi-step work and run them before handoff.
+  Verify once, sequentially: a failing check is a finding to report, not a
+  signal to re-run it, and parallel fan-out over one shared upstream turns your
+  own traffic into the upstream's error report.
+- Use targeted reads for small questions; use readonly exploration or an
+  explicit research workflow for broad scans.
+- Keep command output compact. Persist output over 60 lines under `.ai/` and
+  return a short summary with its path.
+- Never push, modify credentials, or install dependencies without confirmation.
+
+Detailed rationale: `~/scholar-agent/shared/protocols/karpathy-guidelines-ai.md`.

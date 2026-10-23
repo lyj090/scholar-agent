@@ -1,0 +1,7 @@
+description: "Triage Zotero inbox papers into folders and canonical tags. Trigger only for /zotero-inbox-to-library or an explicit inbox-organization request; preview before writes."
+invocation: explicit
+context_cost: high
+script_first: true
+display_name: "Zotero Inbox Triage"
+short_description: "Classify Zotero inbox papers"
+codex_prompt: "Use $zotero-inbox-to-library to triage Zotero inbox papers and prepare a reviewable batch script."
